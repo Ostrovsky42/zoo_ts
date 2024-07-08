@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoo Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c579be1b-13b9-4ff6-a975-e3252a139367/d4lfl9t-af19d25e-429b-47ca-b666-4d0d2450b361.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2M1NzliZTFiLTEzYjktNGZmNi1hOTc1LWUzMjUyYTEzOTM2N1wvZDRsZmw5dC1hZjE5ZDI1ZS00MjliLTQ3Y2EtYjY2Ni00ZDBkMjQ1MGIzNjEuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.SACJz3Lw6M0pDnM5ZgW5FGZ_jPEoBmVIsvslFY3pIxE');
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); 
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        .columns {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        .column {
+            flex: 1;
+            padding: 10px;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }        
+        .enclosure, .animal {
+            border: 1px solid #56c324;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        .footer-buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .footer-buttons button {
+            cursor: pointer;
+            margin: 1px;
+            padding: 5px 10px;
+            color: #000000;
+            border-radius: 20px;
+            background-color: #56c3248b;
+        }
+        .enclosure-list {         
+            height: 700px;
+            width: 5in;           
+            overflow-y: auto;
+            border: 1px solid #6cc444;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }              
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>ZOO</h2>
+     
+        <div class="columns">
+            <div class="column animal">
+                <h2>Add Animal</h2>
+               
+                <div class="form-group">
+                    <label for="animal-name">Name:</label>
+                    <input type="text" id="animal-name">
+                </div>
+                <div class="form-group">
+                    <label for="animal-species">Species:</label>
+                    <input type="text" id="animal-species">
+                </div>
+                <div class="form-group">
+                    <label for="animal-biome">Required Biome:</label>
+                    <input type="text" id="animal-biome">
+                </div>
+
+                <div class="form-group">
+                    <label for="animal-area">Required Area ㎡:</label>
+                    <input type="number" id="animal-area">
+                </div>
+
+                <div class="form-group">
+                    <label for="animal-diet">Type Of Food:</label>
+                    <input type="text" id="animal-diet">
+                </div>
+                
+                <div class="form-group">
+                    <label for="animal-consumption">Food Consumption:</label>
+                    <input type="number" id="animal-consumption">
+                </div>
+
+                <div class="checkbox-form-group">
+                    <label for="animal-predator">Is Predator
+                        <input type="checkbox" id="animal-predator" name="option" >                         
+                    </label>
+                </div>
+
+                <div class="checkbox-form-group">
+                    <label for="animal-water">Needs Water:
+                        <input type="checkbox" id="animal-water">
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="animal-diet">To Enclosure:</label>
+                    <input type="text" id="animal-to-enclosure">
+                </div>
+                        
+                <div class="footer-buttons">
+                    <button onclick="addAnimal()">Add Animal</button>
+                </div>                  
+           
+            </div>
+
+            <div class="column enclosure">                
+                <h2>Add Enclosure</h2>
+                <div class="form-group">
+                    <label for="enclosure-name">Name:</label>
+                    <input type="text" id="enclosure-name">
+                </div>
+                <div class="form-group">
+                    <label for="enclosure-biome">Biome:</label>
+                    <input type="text" id="enclosure-biome">
+                </div>
+                <div class="form-group">
+                    <label for="enclosure-area">Area ㎡:</label>
+                    <input type="number" id="enclosure-area">
+                </div>
+               
+                <div class="checkbox-form-group">
+                    <label for="enclosure-water">Has Water:<input type="checkbox" id="enclosure-water">      </label>
+                </div>
+
+                <div class="footer-buttons">
+                    <button  onclick="addEnclosure()">Add Enclosure</button>
+                </div>
+
+            </div>
+
+            <div class="column enclosure-list">
+                <h2>Enclosures</h2>
+                <div id="enclosures"></div>
+            </div>
+        </div>
+
+        <div class="footer-buttons">
+            <button onclick="getTotalFood()">Total Food</button>
+            <p id="total-food"></p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
